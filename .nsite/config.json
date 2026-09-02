@@ -1,0 +1,25 @@
+{
+  "$schema": "https://nsyte.run/schemas/config.schema.json",
+  "id": "",
+  "title": "NostrOps",
+  "description": "A field guide for Nostr relay operators: concerns, policy, and operational best practices.",
+  "source": "https://github.com/spacesops/nostrops-space",
+  "relays": [
+    "wss://relay.nsite.lol",
+    "wss://relay.damus.io",
+    "wss://nos.lol"
+  ],
+  "servers": [
+    "https://cdn.hzrd149.com",
+    "https://blossom.primal.net"
+  ],
+  "gatewayHostnames": [
+    "nsite.lol",
+    "nwb.tf",
+    "trustedfilter.net"
+  ],
+  "publishProfile": false,
+  "publishRelayList": false,
+  "publishServerList": false,
+  "bunkerPubkey": "0bf68d1689ca985465a95d622fd8154a66412aa989599e280c0195228627f8b3"
+}

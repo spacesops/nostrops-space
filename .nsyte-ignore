@@ -1,0 +1,4 @@
+# Extra ignores beyond nsyte defaults (.git, .DS_Store, node_modules, .nsite/config.json)
+README.md
+.gitignore
+.nsyte-ignore

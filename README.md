@@ -54,6 +54,23 @@ No build step. No JavaScript. Figtree, Fraunces, and IBM Plex Mono are self-host
 
 Any static host works. For GitHub Pages, publish the repository root (`index.html` at `/`).
 
+To publish as an [nsite](https://nsyte.run/) (NIP-5A on Nostr + Blossom):
+
+```bash
+# Pair once with a NIP-46 bunker, then:
+nsyte bunker connect 'bunker://…'
+nsyte bunker use <bunker-pubkey>
+nsyte deploy .
+```
+
+Config lives in `.nsite/config.json`. This project deploys as the named site `nostrops` so it does not overwrite a root nsite or profile on the same key. Credentials stay in the OS keychain, not in the repo.
+
+Live nsite (SpacesOps bunker, named site `nostrops`):
+
+- https://0aqfaabvyoyl4l5dhocm4gu80l4xlj6bpt2sra31t16g9o7vsjnostrops.nsite.lol/
+- https://0aqfaabvyoyl4l5dhocm4gu80l4xlj6bpt2sra31t16g9o7vsjnostrops.nwb.tf/
+- https://0aqfaabvyoyl4l5dhocm4gu80l4xlj6bpt2sra31t16g9o7vsjnostrops.nsite.run/
+
 ## Sources
 
 The site is a synthesis, not a substitute for the originals:
