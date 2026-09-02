@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>NIPs — NostrOps</title>
+    <meta
+      name="description"
+      content="NIPs that belong on a Nostr relay operator’s desk: NIP-01, 11, 13, 22, 40, 42, 77, and 86."
+    />
+    <meta property="og:title" content="NIPs — NostrOps" />
+    <meta
+      property="og:description"
+      content="NIPs that belong on a Nostr relay operator’s desk: NIP-01, 11, 13, 22, 40, 42, 77, and 86."
+    />
+    <meta property="og:image" content="images/hero-banner.jpg" />
+    <meta name="theme-color" content="#0a0e16" />
+    <link rel="icon" href="images/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="index.html">
+          <img src="images/logo.png" width="36" height="36" alt="" />
+          <span class="brand-mark">
+            <strong>NostrOps</strong>
+            <span>Relay operators</span>
+          </span>
+        </a>
+        <nav class="nav" aria-label="Primary">
+          <a href="index.html">Home</a>
+          <a href="concerns.html">Concerns</a>
+          <a href="types.html">Relay types</a>
+          <a href="practices.html">Practices</a>
+          <a href="software.html">Software</a>
+          <a href="nips.html" aria-current="page">NIPs</a>
+          <a href="sources.html">Sources</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <div class="wrap page-head">
+        <p class="kicker">Protocol surface</p>
+        <h1>NIPs that belong on an operator’s desk</h1>
+        <p>
+          Client-only NIPs do not belong in your
+          <code>supported_nips</code> list. These do.
+        </p>
+      </div>
+
+      <section class="nips">
+        <div class="wrap">
+          <div class="nip-grid">
+            <article class="nip">
+              <code>NIP-01</code>
+              <div>
+                <h3>Core protocol</h3>
+                <p>Events, filters, REQ/EVENT/CLOSE. The job description.</p>
+              </div>
+            </article>
+            <article class="nip">
+              <code>NIP-11</code>
+              <div>
+                <h3>Relay information</h3>
+                <p>
+                  Identity card: name, policy, limitations, fees, contact
+                  pubkey.
+                </p>
+              </div>
+            </article>
+            <article class="nip">
+              <code>NIP-42</code>
+              <div>
+                <h3>Client AUTH</h3>
+                <p>Prove key possession before read or write.</p>
+              </div>
+            </article>
+            <article class="nip">
+              <code>NIP-13</code>
+              <div>
+                <h3>Proof of work</h3>
+                <p>Optional write cost. Weaker than payment, stronger than nothing.</p>
+              </div>
+            </article>
+            <article class="nip">
+              <code>NIP-40</code>
+              <div>
+                <h3>Expiration</h3>
+                <p>Honor <code>expiration</code> tags so ephemeral data leaves.</p>
+              </div>
+            </article>
+            <article class="nip">
+              <code>NIP-22</code>
+              <div>
+                <h3>created_at limits</h3>
+                <p>Reject events too far in the past or future.</p>
+              </div>
+            </article>
+            <article class="nip">
+              <code>NIP-86</code>
+              <div>
+                <h3>Management API</h3>
+                <p>Ban/allow pubkeys over HTTP. Authenticate with NIP-98. Lock it down.</p>
+              </div>
+            </article>
+            <article class="nip">
+              <code>NIP-77</code>
+              <div>
+                <h3>Negentropy</h3>
+                <p>Set-reconciliation sync between relays without dumping the world.</p>
+              </div>
+            </article>
+          </div>
+
+          <nav class="pager" aria-label="Pagination">
+            <a href="software.html">
+              <span class="dir">Previous</span>
+              Software
+            </a>
+            <a class="next" href="sources.html">
+              <span class="dir">Next</span>
+              Sources
+            </a>
+          </nav>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <span>NostrOps — a field guide for relay operators.</span>
+        <span>Nostr is a protocol. Relays are a practice.</span>
+      </div>
+    </footer>
+  </body>
+</html>

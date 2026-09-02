@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sources — NostrOps</title>
+    <meta
+      name="description"
+      content="Primary sources behind the NostrOps field guide: NIP-11, NIP-86, strfry, nostr-rs-relay, and production relay setup guides."
+    />
+    <meta property="og:title" content="Sources — NostrOps" />
+    <meta
+      property="og:description"
+      content="Primary sources behind the NostrOps field guide: NIP-11, NIP-86, strfry, nostr-rs-relay, and production relay setup guides."
+    />
+    <meta property="og:image" content="images/hero-banner.jpg" />
+    <meta name="theme-color" content="#0a0e16" />
+    <link rel="icon" href="images/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="index.html">
+          <img src="images/logo.png" width="36" height="36" alt="" />
+          <span class="brand-mark">
+            <strong>NostrOps</strong>
+            <span>Relay operators</span>
+          </span>
+        </a>
+        <nav class="nav" aria-label="Primary">
+          <a href="index.html">Home</a>
+          <a href="concerns.html">Concerns</a>
+          <a href="types.html">Relay types</a>
+          <a href="practices.html">Practices</a>
+          <a href="software.html">Software</a>
+          <a href="nips.html">NIPs</a>
+          <a href="sources.html" aria-current="page">Sources</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <div class="wrap page-head">
+        <p class="kicker">Go deeper</p>
+        <h1>Primary sources</h1>
+        <p>
+          This site is a synthesis. Read the originals before you copy a
+          config.
+        </p>
+      </div>
+
+      <section class="resources">
+        <div class="wrap">
+          <ul class="resource-list">
+            <li>
+              <a href="https://nips.nostr.com/11" rel="noopener noreferrer" target="_blank">
+                <strong>NIP-11 — Relay Information Document</strong>
+                <span>Official fields for identity, limitations, fees, and terms.</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://nips.nostr.com/86" rel="noopener noreferrer" target="_blank">
+                <strong>NIP-86 — Relay Management API</strong>
+                <span>JSON-RPC admin methods and NIP-98 authentication.</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://d-central.tech/run-your-own-nostr-relay-bitcoiners/" rel="noopener noreferrer" target="_blank">
+                <strong>Run Your Own Nostr Relay (D-Central)</strong>
+                <span>strfry on a VPS, NIP-11, moderation patterns, backups, paid relays.</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://learnnostr.org/getting-started/relay-setup" rel="noopener noreferrer" target="_blank">
+                <strong>LearnNostr — Relay Setup</strong>
+                <span>Production strfry, nginx, systemd hardening, monitoring.</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://deploynode.io/guides/run-a-nostr-relay" rel="noopener noreferrer" target="_blank">
+                <strong>deploynode — Run a Nostr relay</strong>
+                <span>Write-policy plugins, file limits, why public writes fill disks.</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/hoytech/strfry" rel="noopener noreferrer" target="_blank">
+                <strong>hoytech/strfry</strong>
+                <span>High-performance C++ relay used widely in production.</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/scsibug/nostr-rs-relay" rel="noopener noreferrer" target="_blank">
+                <strong>scsibug/nostr-rs-relay</strong>
+                <span>Rust/SQLite relay and database maintenance notes.</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://nostr.co.uk/news/web-of-trust-on-nostr/" rel="noopener noreferrer" target="_blank">
+                <strong>Web of Trust on Nostr</strong>
+                <span>Why spam is an edge problem, and when relays still filter.</span>
+              </a>
+            </li>
+          </ul>
+
+          <nav class="pager" aria-label="Pagination">
+            <a href="nips.html">
+              <span class="dir">Previous</span>
+              NIPs
+            </a>
+            <a class="next" href="index.html">
+              <span class="dir">Next</span>
+              Home
+            </a>
+          </nav>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <span>NostrOps — a field guide for relay operators.</span>
+        <span>Nostr is a protocol. Relays are a practice.</span>
+      </div>
+    </footer>
+  </body>
+</html>

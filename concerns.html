@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Concerns — NostrOps</title>
+    <meta
+      name="description"
+      content="What keeps Nostr relay operators up: spam, storage growth, policy, jurisdiction, the commons problem, and admin surfaces."
+    />
+    <meta property="og:title" content="Concerns — NostrOps" />
+    <meta
+      property="og:description"
+      content="What keeps Nostr relay operators up: spam, storage growth, policy, jurisdiction, the commons problem, and admin surfaces."
+    />
+    <meta property="og:image" content="images/hero-banner.jpg" />
+    <meta name="theme-color" content="#0a0e16" />
+    <link rel="icon" href="images/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="index.html">
+          <img src="images/logo.png" width="36" height="36" alt="" />
+          <span class="brand-mark">
+            <strong>NostrOps</strong>
+            <span>Relay operators</span>
+          </span>
+        </a>
+        <nav class="nav" aria-label="Primary">
+          <a href="index.html">Home</a>
+          <a href="concerns.html" aria-current="page">Concerns</a>
+          <a href="types.html">Relay types</a>
+          <a href="practices.html">Practices</a>
+          <a href="software.html">Software</a>
+          <a href="nips.html">NIPs</a>
+          <a href="sources.html">Sources</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <div class="wrap page-head">
+        <p class="kicker">What keeps operators up</p>
+        <h1>Concerns and considerations</h1>
+        <p>
+          A public relay with no policy becomes a spam sink within days. Disk
+          fills, bandwidth bills climb, and you inherit content you never asked
+          to host. These are the recurring pressures.
+        </p>
+      </div>
+
+      <section>
+        <div class="wrap">
+          <div class="grid-3">
+            <article class="card">
+              <span class="num">01</span>
+              <h3>Spam and resource exhaustion</h3>
+              <p>
+                Valid signatures are cheap. Without write policy, rate limits,
+                and size caps, strangers will fill your disk. Heavy
+                <code>REQ</code> queries and subscription storms are the read
+                side of the same problem.
+              </p>
+            </article>
+            <article class="card">
+              <span class="num">02</span>
+              <h3>Storage growth</h3>
+              <p>
+                Event databases grow with traffic and retention. Public relays
+                can add gigabytes per month. LMDB map size, SQLite vacuum, and
+                pruning of old or ephemeral events are operational, not
+                optional.
+              </p>
+            </article>
+            <article class="card">
+              <span class="num">03</span>
+              <h3>Policy versus protocol</h3>
+              <p>
+                The protocol is censorship-resistant because users can leave.
+                Your relay is still your house. Write plugins, allowlists, web
+                of trust, and paid admission are how operators express policy
+                without pretending to be a global moderator.
+              </p>
+            </article>
+            <article class="card">
+              <span class="num">04</span>
+              <h3>Legal and jurisdictional reality</h3>
+              <p>
+                Relays store cleartext events. Hosting country, operator
+                country, and user country may all differ. Publish terms of
+                service, a contact pubkey for abuse reports, and a retention
+                story. Encrypting DMs (kinds 4 and 1059) does not remove every
+                obligation.
+              </p>
+            </article>
+            <article class="card">
+              <span class="num">05</span>
+              <h3>The commons problem</h3>
+              <p>
+                Free public relays are a gift and an attractor for abuse. Paid
+                relays (Lightning admission or subscription, advertised in
+                NIP-11) align incentives. Personal and community relays do not
+                need to be the world’s inbox.
+              </p>
+            </article>
+            <article class="card">
+              <span class="num">06</span>
+              <h3>Secrets and admin surfaces</h3>
+              <p>
+                NIP-86 management APIs, embedded admin panels, database URIs,
+                and paid-relay keys must never face the public internet.
+                Reverse-proxy TLS is mandatory; clients speak
+                <code>wss://</code> only.
+              </p>
+            </article>
+          </div>
+
+          <nav class="pager" aria-label="Pagination">
+            <a href="index.html">
+              <span class="dir">Previous</span>
+              Home
+            </a>
+            <a class="next" href="types.html">
+              <span class="dir">Next</span>
+              Relay types
+            </a>
+          </nav>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <span>NostrOps — a field guide for relay operators.</span>
+        <span>Nostr is a protocol. Relays are a practice.</span>
+      </div>
+    </footer>
+  </body>
+</html>

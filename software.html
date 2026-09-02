@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Software — NostrOps</title>
+    <meta
+      name="description"
+      content="Relay software Nostr operators actually run: strfry, nostr-rs-relay, nostream, khatru, rnostr, nostrd, GRAIN, and filter proxies."
+    />
+    <meta property="og:title" content="Software — NostrOps" />
+    <meta
+      property="og:description"
+      content="Relay software Nostr operators actually run: strfry, nostr-rs-relay, nostream, khatru, rnostr, nostrd, GRAIN, and filter proxies."
+    />
+    <meta property="og:image" content="images/hero-banner.jpg" />
+    <meta name="theme-color" content="#0a0e16" />
+    <link rel="icon" href="images/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="index.html">
+          <img src="images/logo.png" width="36" height="36" alt="" />
+          <span class="brand-mark">
+            <strong>NostrOps</strong>
+            <span>Relay operators</span>
+          </span>
+        </a>
+        <nav class="nav" aria-label="Primary">
+          <a href="index.html">Home</a>
+          <a href="concerns.html">Concerns</a>
+          <a href="types.html">Relay types</a>
+          <a href="practices.html">Practices</a>
+          <a href="software.html" aria-current="page">Software</a>
+          <a href="nips.html">NIPs</a>
+          <a href="sources.html">Sources</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <div class="wrap page-head">
+        <p class="kicker">Implementations</p>
+        <h1>Relay software operators actually run</h1>
+        <p>
+          Pick based on hardware, language comfort, and whether you need
+          payments or plugins on day one. All of these speak the core protocol.
+        </p>
+      </div>
+
+      <section>
+        <div class="wrap">
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Software</th>
+                  <th>Stack</th>
+                  <th>Fits</th>
+                  <th>Operator notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>strfry</td>
+                  <td>C++, LMDB</td>
+                  <td>Public and paid relays, Umbrel</td>
+                  <td>
+                    Fast, compact on disk, write-policy plugins, JSONL export,
+                    Negentropy sync. The default “boring infrastructure” choice.
+                  </td>
+                </tr>
+                <tr>
+                  <td>nostr-rs-relay</td>
+                  <td>Rust, SQLite</td>
+                  <td>Personal relays, small VPS, Pi</td>
+                  <td>
+                    Single binary, light footprint. Plan for SQLite vacuum and
+                    online backup on busy instances.
+                  </td>
+                </tr>
+                <tr>
+                  <td>nostream</td>
+                  <td>TypeScript, Postgres</td>
+                  <td>Paid relays with admin tooling</td>
+                  <td>
+                    Lightning hooks, richer moderation surfaces, heavier
+                    operational footprint.
+                  </td>
+                </tr>
+                <tr>
+                  <td>khatru / rnostr / nostrd</td>
+                  <td>Go or Rust, often LMDB</td>
+                  <td>Custom relays, libraries</td>
+                  <td>
+                    Embeddable frameworks when you want policy in code rather
+                    than a plugin script.
+                  </td>
+                </tr>
+                <tr>
+                  <td>GRAIN and filter proxies</td>
+                  <td>Go / sidecar</td>
+                  <td>Fine-grained allow/deny</td>
+                  <td>
+                    Whitelists, mute-list imports, IP cost accounting. Sit in
+                    front of a store-and-forward relay.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="note">
+            Typical production box: 2+ cores, 4–8&nbsp;GB RAM, SSD with room to
+            grow, a domain pointing at a dedicated IPv4, and a reverse proxy.
+            A $5–$10 VPS is enough for a personal relay. Public firehoses are
+            not.
+          </p>
+
+          <nav class="pager" aria-label="Pagination">
+            <a href="practices.html">
+              <span class="dir">Previous</span>
+              Practices
+            </a>
+            <a class="next" href="nips.html">
+              <span class="dir">Next</span>
+              NIPs
+            </a>
+          </nav>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <span>NostrOps — a field guide for relay operators.</span>
+        <span>Nostr is a protocol. Relays are a practice.</span>
+      </div>
+    </footer>
+  </body>
+</html>

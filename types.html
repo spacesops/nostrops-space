@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relay types — NostrOps</title>
+    <meta
+      name="description"
+      content="Not every Nostr relay should be public. Personal, community, paid public, and specialized shapes for operators."
+    />
+    <meta property="og:title" content="Relay types — NostrOps" />
+    <meta
+      property="og:description"
+      content="Not every Nostr relay should be public. Personal, community, paid public, and specialized shapes for operators."
+    />
+    <meta property="og:image" content="images/hero-banner.jpg" />
+    <meta name="theme-color" content="#0a0e16" />
+    <link rel="icon" href="images/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="index.html">
+          <img src="images/logo.png" width="36" height="36" alt="" />
+          <span class="brand-mark">
+            <strong>NostrOps</strong>
+            <span>Relay operators</span>
+          </span>
+        </a>
+        <nav class="nav" aria-label="Primary">
+          <a href="index.html">Home</a>
+          <a href="concerns.html">Concerns</a>
+          <a href="types.html" aria-current="page">Relay types</a>
+          <a href="practices.html">Practices</a>
+          <a href="software.html">Software</a>
+          <a href="nips.html">NIPs</a>
+          <a href="sources.html">Sources</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <div class="wrap page-head">
+        <p class="kicker">Choose a shape first</p>
+        <h1>Not every relay should be public.</h1>
+        <p>
+          Start restrictive. Loosen later. It is much easier to open a relay
+          than to scrub a spam epidemic out of the event store.
+        </p>
+      </div>
+
+      <section class="types">
+        <div class="wrap split reverse">
+          <div class="copy">
+            <div class="grid-2">
+              <article class="card">
+                <h3>Personal</h3>
+                <p>
+                  Allowlist your pubkey and a few friends. Strongest archive
+                  for your own notes. Useless as a general firehose — which is
+                  fine.
+                </p>
+              </article>
+              <article class="card">
+                <h3>Community</h3>
+                <p>
+                  Blocklist plus web-of-trust from a seed set. Accept people
+                  within N hops of operators; reject the rest at ingest.
+                </p>
+              </article>
+              <article class="card">
+                <h3>Paid public</h3>
+                <p>
+                  Advertise fees in NIP-11. Lightning invoice, record paid
+                  pubkeys, keep the lights on without running a commons.
+                </p>
+              </article>
+              <article class="card">
+                <h3>Specialized</h3>
+                <p>
+                  Kind-limited, language-filtered, group (NIP-29), or media
+                  (Blossom / NIP-96) relays. Niche is a policy, not a
+                  failure.
+                </p>
+              </article>
+            </div>
+          </div>
+          <img
+            src="images/concerns.jpg"
+            alt="Server rack in low light with a single amber warning LED."
+            width="1200"
+            height="800"
+          />
+        </div>
+        <div class="wrap">
+          <nav class="pager" aria-label="Pagination">
+            <a href="concerns.html">
+              <span class="dir">Previous</span>
+              Concerns
+            </a>
+            <a class="next" href="practices.html">
+              <span class="dir">Next</span>
+              Practices
+            </a>
+          </nav>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <span>NostrOps — a field guide for relay operators.</span>
+        <span>Nostr is a protocol. Relays are a practice.</span>
+      </div>
+    </footer>
+  </body>
+</html>

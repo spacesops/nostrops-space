@@ -11,7 +11,7 @@
     <meta property="og:title" content="NostrOps — Nostr Operators" />
     <meta
       property="og:description"
-      content="A one-page field guide for administrators of Nostr relay servers: concerns, policy, and operational best practices."
+      content="A field guide for administrators of Nostr relay servers: concerns, policy, and operational best practices."
     />
     <meta property="og:image" content="images/hero-banner.jpg" />
     <meta name="theme-color" content="#0a0e16" />
@@ -24,7 +24,7 @@
 
     <header class="site-header">
       <div class="wrap">
-        <a class="brand" href="#top">
+        <a class="brand" href="index.html">
           <img src="images/logo.png" width="36" height="36" alt="" />
           <span class="brand-mark">
             <strong>NostrOps</strong>
@@ -32,19 +32,19 @@
           </span>
         </a>
         <nav class="nav" aria-label="Primary">
-          <a href="#what">What</a>
-          <a href="#concerns">Concerns</a>
-          <a href="#types">Relay types</a>
-          <a href="#practices">Practices</a>
-          <a href="#software">Software</a>
-          <a href="#nips">NIPs</a>
-          <a href="#resources">Sources</a>
+          <a href="index.html" aria-current="page">Home</a>
+          <a href="concerns.html">Concerns</a>
+          <a href="types.html">Relay types</a>
+          <a href="practices.html">Practices</a>
+          <a href="software.html">Software</a>
+          <a href="nips.html">NIPs</a>
+          <a href="sources.html">Sources</a>
         </nav>
       </div>
     </header>
 
     <main id="main">
-      <section class="hero" id="top">
+      <section class="hero">
         <div class="hero-media" aria-hidden="true">
           <img
             src="images/hero-banner.jpg"
@@ -63,14 +63,14 @@
               decide what lives, who can write, and whether the lights stay on.
             </p>
             <div class="hero-actions">
-              <a class="btn btn-primary" href="#practices">Read the practices</a>
-              <a class="btn btn-ghost" href="#concerns">See the concerns</a>
+              <a class="btn btn-primary" href="practices.html">Read the practices</a>
+              <a class="btn btn-ghost" href="concerns.html">See the concerns</a>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="what">
+      <section>
         <div class="wrap split">
           <div class="copy prose">
             <p class="kicker">The job</p>
@@ -89,7 +89,7 @@
               inbox will keep your archive.
             </p>
             <p>
-              This page is a field guide, not a vendor pitch. It synthesizes
+              This site is a field guide, not a vendor pitch. It synthesizes
               what production operators, NIP authors, and relay implementers
               have written about the work.
             </p>
@@ -103,512 +103,66 @@
         </div>
       </section>
 
-      <hr class="rule wrap" />
-
-      <section id="concerns">
+      <section>
         <div class="wrap">
           <div class="section-head">
-            <p class="kicker">What keeps operators up</p>
-            <h2>Concerns and considerations</h2>
+            <p class="kicker">The guide</p>
+            <h2>Start where the work is.</h2>
             <p>
-              A public relay with no policy becomes a spam sink within days.
-              Disk fills, bandwidth bills climb, and you inherit content you
-              never asked to host. These are the recurring pressures.
+              Six chapters. Read them in order, or jump to the pressure you
+              already feel.
             </p>
           </div>
-
           <div class="grid-3">
-            <article class="card">
+            <a class="card" href="concerns.html">
               <span class="num">01</span>
-              <h3>Spam and resource exhaustion</h3>
+              <h3>Concerns</h3>
               <p>
-                Valid signatures are cheap. Without write policy, rate limits,
-                and size caps, strangers will fill your disk. Heavy
-                <code>REQ</code> queries and subscription storms are the read
-                side of the same problem.
+                Spam, disk growth, policy, jurisdiction, the commons, and
+                admin surfaces.
               </p>
-            </article>
-            <article class="card">
+            </a>
+            <a class="card" href="types.html">
               <span class="num">02</span>
-              <h3>Storage growth</h3>
+              <h3>Relay types</h3>
               <p>
-                Event databases grow with traffic and retention. Public relays
-                can add gigabytes per month. LMDB map size, SQLite vacuum, and
-                pruning of old or ephemeral events are operational, not
-                optional.
+                Personal, community, paid public, specialized. Start
+                restrictive.
               </p>
-            </article>
-            <article class="card">
+            </a>
+            <a class="card" href="practices.html">
               <span class="num">03</span>
-              <h3>Policy versus protocol</h3>
+              <h3>Practices</h3>
               <p>
-                The protocol is censorship-resistant because users can leave.
-                Your relay is still your house. Write plugins, allowlists, web
-                of trust, and paid admission are how operators express policy
-                without pretending to be a global moderator.
+                TLS, NIP-11, ingest filters, backups, systemd, and a restore
+                runbook.
               </p>
-            </article>
-            <article class="card">
+            </a>
+            <a class="card" href="software.html">
               <span class="num">04</span>
-              <h3>Legal and jurisdictional reality</h3>
+              <h3>Software</h3>
               <p>
-                Relays store cleartext events. Hosting country, operator
-                country, and user country may all differ. Publish terms of
-                service, a contact pubkey for abuse reports, and a retention
-                story. Encrypting DMs (kinds 4 and 1059) does not remove every
-                obligation.
+                strfry, nostr-rs-relay, nostream, and the rest of the
+                production set.
               </p>
-            </article>
-            <article class="card">
+            </a>
+            <a class="card" href="nips.html">
               <span class="num">05</span>
-              <h3>The commons problem</h3>
+              <h3>NIPs</h3>
               <p>
-                Free public relays are a gift and an attractor for abuse. Paid
-                relays (Lightning admission or subscription, advertised in
-                NIP-11) align incentives. Personal and community relays do not
-                need to be the world’s inbox.
+                The protocol surface that belongs on an operator’s desk, not
+                a client’s.
               </p>
-            </article>
-            <article class="card">
+            </a>
+            <a class="card" href="sources.html">
               <span class="num">06</span>
-              <h3>Secrets and admin surfaces</h3>
+              <h3>Sources</h3>
               <p>
-                NIP-86 management APIs, embedded admin panels, database URIs,
-                and paid-relay keys must never face the public internet.
-                Reverse-proxy TLS is mandatory; clients speak
-                <code>wss://</code> only.
+                NIPs and production guides this site synthesizes. Read them
+                before you copy a config.
               </p>
-            </article>
+            </a>
           </div>
-        </div>
-      </section>
-
-      <section class="types" id="types">
-        <div class="wrap split reverse">
-          <div class="copy">
-            <p class="kicker">Choose a shape first</p>
-            <h2>Not every relay should be public.</h2>
-            <p class="lede-block space-below">
-              Start restrictive. Loosen later. It is much easier to open a
-              relay than to scrub a spam epidemic out of the event store.
-            </p>
-            <div class="grid-2">
-              <article class="card">
-                <h3>Personal</h3>
-                <p>
-                  Allowlist your pubkey and a few friends. Strongest archive
-                  for your own notes. Useless as a general firehose — which is
-                  fine.
-                </p>
-              </article>
-              <article class="card">
-                <h3>Community</h3>
-                <p>
-                  Blocklist plus web-of-trust from a seed set. Accept people
-                  within N hops of operators; reject the rest at ingest.
-                </p>
-              </article>
-              <article class="card">
-                <h3>Paid public</h3>
-                <p>
-                  Advertise fees in NIP-11. Lightning invoice, record paid
-                  pubkeys, keep the lights on without running a commons.
-                </p>
-              </article>
-              <article class="card">
-                <h3>Specialized</h3>
-                <p>
-                  Kind-limited, language-filtered, group (NIP-29), or media
-                  (Blossom / NIP-96) relays. Niche is a policy, not a
-                  failure.
-                </p>
-              </article>
-            </div>
-          </div>
-          <img
-            src="images/concerns.jpg"
-            alt="Server rack in low light with a single amber warning LED."
-            width="1200"
-            height="800"
-          />
-        </div>
-      </section>
-
-      <hr class="rule wrap" />
-
-      <section class="practices" id="practices">
-        <div class="wrap">
-          <div class="split tight">
-            <div>
-              <p class="kicker">Operator playbook</p>
-              <h2>Best practices</h2>
-              <p class="lede-block">
-                Drawn from production strfry, nostr-rs-relay, and nostream
-                deployments, plus the NIPs that operators actually have to
-                implement.
-              </p>
-            </div>
-            <img
-              src="images/practices.jpg"
-              alt="A dim workstation with a glowing terminal beside out-of-focus server equipment."
-              width="1200"
-              height="800"
-            />
-          </div>
-
-          <ol class="practice-list">
-            <li>
-              <span class="idx">01</span>
-              <div>
-                <strong>Terminate TLS in front of the relay.</strong>
-                <p>
-                  Bind the relay to localhost. Put Caddy or nginx in front for
-                  certificates and WebSocket upgrades. Never expose raw
-                  <code>ws://</code> on a public address.
-                </p>
-              </div>
-            </li>
-            <li>
-              <span class="idx">02</span>
-              <div>
-                <strong>Treat NIP-11 as the most-read file on the box.</strong>
-                <p>
-                  Fill name, description, operator pubkey, contact, software,
-                  version, terms of service, limitations, and fees. Clients use
-                  this document to decide whether to connect, pay, or AUTH.
-                </p>
-              </div>
-            </li>
-            <li>
-              <span class="idx">03</span>
-              <div>
-                <strong>Filter at ingest, not after the disk is full.</strong>
-                <p>
-                  strfry write-policy plugins, GRAIN allow/deny lists, or a
-                  filter proxy in front of the relay. Reject, rate-limit, or
-                  shadow-reject before events hit LMDB or SQLite.
-                </p>
-              </div>
-            </li>
-            <li>
-              <span class="idx">04</span>
-              <div>
-                <strong>Cap everything that can grow without bound.</strong>
-                <p>
-                  Max event size, tag count, subscriptions per connection, idle
-                  timeouts, file descriptors, and <code>created_at</code>
-                  windows (NIP-22). Advertise the same numbers in
-                  <code>limitation</code> so clients fail predictably.
-                </p>
-              </div>
-            </li>
-            <li>
-              <span class="idx">05</span>
-              <div>
-                <strong>Use NIP-42 where privacy or payment depends on identity.</strong>
-                <p>
-                  AUTH is the right tool for paid relays, private communities,
-                  and restricted reads of DMs (kinds 4 and 1059). Advertise it
-                  only when it is actually enabled and the service URL is set.
-                </p>
-              </div>
-            </li>
-            <li>
-              <span class="idx">06</span>
-              <div>
-                <strong>Run as an unprivileged user under systemd.</strong>
-                <p>
-                  Dedicated account, <code>NoNewPrivileges</code>, tight
-                  <code>ReadWritePaths</code>, and <code>LimitNOFILE</code>
-                  matched to config. Relays that start as root quietly break
-                  their own maintenance commands.
-                </p>
-              </div>
-            </li>
-            <li>
-              <span class="idx">07</span>
-              <div>
-                <strong>Back up events off-box, every night.</strong>
-                <p>
-                  <code>strfry export</code> to JSONL, or SQLite online backup.
-                  Copy config and write-policy scripts too. Keep a copy offsite.
-                  Events compress well; the archive is the product.
-                </p>
-              </div>
-            </li>
-            <li>
-              <span class="idx">08</span>
-              <div>
-                <strong>Compact, prune, and watch the disk.</strong>
-                <p>
-                  LMDB map size is address space, not RAM — but the data
-                  directory is real. Compact after deletes. Drop ephemeral
-                  events. Alert before the volume fills.
-                </p>
-              </div>
-            </li>
-            <li>
-              <span class="idx">09</span>
-              <div>
-                <strong>Keep admin APIs off the public internet.</strong>
-                <p>
-                  NIP-86 (JSON-RPC over HTTP, NIP-98 auth) and any
-                  <code>/panel</code> belong on localhost, a VPN, or a locked
-                  reverse-proxy path. Do not commit database URIs or admin
-                  tokens.
-                </p>
-              </div>
-            </li>
-            <li>
-              <span class="idx">10</span>
-              <div>
-                <strong>Say the policy out loud.</strong>
-                <p>
-                  Terms of service, posting policy, and a contact pubkey for
-                  abuse reports. Operators are not obliged to answer DMs — but
-                  clients need somewhere to send them.
-                </p>
-              </div>
-            </li>
-            <li>
-              <span class="idx">11</span>
-              <div>
-                <strong>Pay for public write access, or don’t offer it.</strong>
-                <p>
-                  Lightning admission or subscription is the honest way to run
-                  a general-purpose relay. Proof of work (NIP-13) is a weaker
-                  cousin. Free and open is a choice you will subsidize.
-                </p>
-              </div>
-            </li>
-            <li>
-              <span class="idx">12</span>
-              <div>
-                <strong>Update, monitor, and write the runbook.</strong>
-                <p>
-                  Unattended security updates, logs, connection counts, and a
-                  one-page restore procedure. A relay nobody can rebuild is a
-                  relay that will disappear.
-                </p>
-              </div>
-            </li>
-          </ol>
-        </div>
-      </section>
-
-      <section id="software">
-        <div class="wrap">
-          <div class="section-head">
-            <p class="kicker">Implementations</p>
-            <h2>Relay software operators actually run</h2>
-            <p>
-              Pick based on hardware, language comfort, and whether you need
-              payments or plugins on day one. All of these speak the core
-              protocol.
-            </p>
-          </div>
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>Software</th>
-                  <th>Stack</th>
-                  <th>Fits</th>
-                  <th>Operator notes</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>strfry</td>
-                  <td>C++, LMDB</td>
-                  <td>Public and paid relays, Umbrel</td>
-                  <td>
-                    Fast, compact on disk, write-policy plugins, JSONL export,
-                    Negentropy sync. The default “boring infrastructure” choice.
-                  </td>
-                </tr>
-                <tr>
-                  <td>nostr-rs-relay</td>
-                  <td>Rust, SQLite</td>
-                  <td>Personal relays, small VPS, Pi</td>
-                  <td>
-                    Single binary, light footprint. Plan for SQLite vacuum and
-                    online backup on busy instances.
-                  </td>
-                </tr>
-                <tr>
-                  <td>nostream</td>
-                  <td>TypeScript, Postgres</td>
-                  <td>Paid relays with admin tooling</td>
-                  <td>
-                    Lightning hooks, richer moderation surfaces, heavier
-                    operational footprint.
-                  </td>
-                </tr>
-                <tr>
-                  <td>khatru / rnostr / nostrd</td>
-                  <td>Go or Rust, often LMDB</td>
-                  <td>Custom relays, libraries</td>
-                  <td>
-                    Embeddable frameworks when you want policy in code rather
-                    than a plugin script.
-                  </td>
-                </tr>
-                <tr>
-                  <td>GRAIN and filter proxies</td>
-                  <td>Go / sidecar</td>
-                  <td>Fine-grained allow/deny</td>
-                  <td>
-                    Whitelists, mute-list imports, IP cost accounting. Sit in
-                    front of a store-and-forward relay.
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <p class="note">
-            Typical production box: 2+ cores, 4–8&nbsp;GB RAM, SSD with room to
-            grow, a domain pointing at a dedicated IPv4, and a reverse proxy.
-            A $5–$10 VPS is enough for a personal relay. Public firehoses are
-            not.
-          </p>
-        </div>
-      </section>
-
-      <section class="nips" id="nips">
-        <div class="wrap">
-          <div class="section-head">
-            <p class="kicker">Protocol surface</p>
-            <h2>NIPs that belong on an operator’s desk</h2>
-            <p>
-              Client-only NIPs do not belong in your
-              <code>supported_nips</code> list. These do.
-            </p>
-          </div>
-          <div class="nip-grid">
-            <article class="nip">
-              <code>NIP-01</code>
-              <div>
-                <h3>Core protocol</h3>
-                <p>Events, filters, REQ/EVENT/CLOSE. The job description.</p>
-              </div>
-            </article>
-            <article class="nip">
-              <code>NIP-11</code>
-              <div>
-                <h3>Relay information</h3>
-                <p>
-                  Identity card: name, policy, limitations, fees, contact
-                  pubkey.
-                </p>
-              </div>
-            </article>
-            <article class="nip">
-              <code>NIP-42</code>
-              <div>
-                <h3>Client AUTH</h3>
-                <p>Prove key possession before read or write.</p>
-              </div>
-            </article>
-            <article class="nip">
-              <code>NIP-13</code>
-              <div>
-                <h3>Proof of work</h3>
-                <p>Optional write cost. Weaker than payment, stronger than nothing.</p>
-              </div>
-            </article>
-            <article class="nip">
-              <code>NIP-40</code>
-              <div>
-                <h3>Expiration</h3>
-                <p>Honor <code>expiration</code> tags so ephemeral data leaves.</p>
-              </div>
-            </article>
-            <article class="nip">
-              <code>NIP-22</code>
-              <div>
-                <h3>created_at limits</h3>
-                <p>Reject events too far in the past or future.</p>
-              </div>
-            </article>
-            <article class="nip">
-              <code>NIP-86</code>
-              <div>
-                <h3>Management API</h3>
-                <p>Ban/allow pubkeys over HTTP. Authenticate with NIP-98. Lock it down.</p>
-              </div>
-            </article>
-            <article class="nip">
-              <code>NIP-77</code>
-              <div>
-                <h3>Negentropy</h3>
-                <p>Set-reconciliation sync between relays without dumping the world.</p>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="resources" id="resources">
-        <div class="wrap">
-          <div class="section-head">
-            <p class="kicker">Go deeper</p>
-            <h2>Primary sources</h2>
-            <p>
-              This page is a synthesis. Read the originals before you copy a
-              config.
-            </p>
-          </div>
-          <ul class="resource-list">
-            <li>
-              <a href="https://nips.nostr.com/11" rel="noopener noreferrer" target="_blank">
-                <strong>NIP-11 — Relay Information Document</strong>
-                <span>Official fields for identity, limitations, fees, and terms.</span>
-              </a>
-            </li>
-            <li>
-              <a href="https://nips.nostr.com/86" rel="noopener noreferrer" target="_blank">
-                <strong>NIP-86 — Relay Management API</strong>
-                <span>JSON-RPC admin methods and NIP-98 authentication.</span>
-              </a>
-            </li>
-            <li>
-              <a href="https://d-central.tech/run-your-own-nostr-relay-bitcoiners/" rel="noopener noreferrer" target="_blank">
-                <strong>Run Your Own Nostr Relay (D-Central)</strong>
-                <span>strfry on a VPS, NIP-11, moderation patterns, backups, paid relays.</span>
-              </a>
-            </li>
-            <li>
-              <a href="https://learnnostr.org/getting-started/relay-setup" rel="noopener noreferrer" target="_blank">
-                <strong>LearnNostr — Relay Setup</strong>
-                <span>Production strfry, nginx, systemd hardening, monitoring.</span>
-              </a>
-            </li>
-            <li>
-              <a href="https://deploynode.io/guides/run-a-nostr-relay" rel="noopener noreferrer" target="_blank">
-                <strong>deploynode — Run a Nostr relay</strong>
-                <span>Write-policy plugins, file limits, why public writes fill disks.</span>
-              </a>
-            </li>
-            <li>
-              <a href="https://github.com/hoytech/strfry" rel="noopener noreferrer" target="_blank">
-                <strong>hoytech/strfry</strong>
-                <span>High-performance C++ relay used widely in production.</span>
-              </a>
-            </li>
-            <li>
-              <a href="https://github.com/scsibug/nostr-rs-relay" rel="noopener noreferrer" target="_blank">
-                <strong>scsibug/nostr-rs-relay</strong>
-                <span>Rust/SQLite relay and database maintenance notes.</span>
-              </a>
-            </li>
-            <li>
-              <a href="https://nostr.co.uk/news/web-of-trust-on-nostr/" rel="noopener noreferrer" target="_blank">
-                <strong>Web of Trust on Nostr</strong>
-                <span>Why spam is an edge problem, and when relays still filter.</span>
-              </a>
-            </li>
-          </ul>
         </div>
       </section>
     </main>

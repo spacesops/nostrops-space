@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Practices — NostrOps</title>
+    <meta
+      name="description"
+      content="Best practices for Nostr relay operators: TLS, NIP-11, ingest filters, resource caps, NIP-42, backups, and admin lockdown."
+    />
+    <meta property="og:title" content="Practices — NostrOps" />
+    <meta
+      property="og:description"
+      content="Best practices for Nostr relay operators: TLS, NIP-11, ingest filters, resource caps, NIP-42, backups, and admin lockdown."
+    />
+    <meta property="og:image" content="images/hero-banner.jpg" />
+    <meta name="theme-color" content="#0a0e16" />
+    <link rel="icon" href="images/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="index.html">
+          <img src="images/logo.png" width="36" height="36" alt="" />
+          <span class="brand-mark">
+            <strong>NostrOps</strong>
+            <span>Relay operators</span>
+          </span>
+        </a>
+        <nav class="nav" aria-label="Primary">
+          <a href="index.html">Home</a>
+          <a href="concerns.html">Concerns</a>
+          <a href="types.html">Relay types</a>
+          <a href="practices.html" aria-current="page">Practices</a>
+          <a href="software.html">Software</a>
+          <a href="nips.html">NIPs</a>
+          <a href="sources.html">Sources</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <div class="wrap page-head">
+        <p class="kicker">Operator playbook</p>
+        <h1>Best practices</h1>
+        <p>
+          Drawn from production strfry, nostr-rs-relay, and nostream
+          deployments, plus the NIPs that operators actually have to implement.
+        </p>
+      </div>
+
+      <section class="practices">
+        <div class="wrap">
+          <div class="split tight">
+            <div class="prose">
+              <p>
+                These are not a tutorial for compiling a relay. They are the
+                habits that keep a box from becoming a spam sink, a legal
+                surprise, or an unrestorable archive.
+              </p>
+            </div>
+            <img
+              src="images/practices.jpg"
+              alt="A dim workstation with a glowing terminal beside out-of-focus server equipment."
+              width="1200"
+              height="800"
+            />
+          </div>
+
+          <ol class="practice-list">
+            <li>
+              <span class="idx">01</span>
+              <div>
+                <strong>Terminate TLS in front of the relay.</strong>
+                <p>
+                  Bind the relay to localhost. Put Caddy or nginx in front for
+                  certificates and WebSocket upgrades. Never expose raw
+                  <code>ws://</code> on a public address.
+                </p>
+              </div>
+            </li>
+            <li>
+              <span class="idx">02</span>
+              <div>
+                <strong>Treat NIP-11 as the most-read file on the box.</strong>
+                <p>
+                  Fill name, description, operator pubkey, contact, software,
+                  version, terms of service, limitations, and fees. Clients use
+                  this document to decide whether to connect, pay, or AUTH.
+                </p>
+              </div>
+            </li>
+            <li>
+              <span class="idx">03</span>
+              <div>
+                <strong>Filter at ingest, not after the disk is full.</strong>
+                <p>
+                  strfry write-policy plugins, GRAIN allow/deny lists, or a
+                  filter proxy in front of the relay. Reject, rate-limit, or
+                  shadow-reject before events hit LMDB or SQLite.
+                </p>
+              </div>
+            </li>
+            <li>
+              <span class="idx">04</span>
+              <div>
+                <strong>Cap everything that can grow without bound.</strong>
+                <p>
+                  Max event size, tag count, subscriptions per connection, idle
+                  timeouts, file descriptors, and <code>created_at</code>
+                  windows (NIP-22). Advertise the same numbers in
+                  <code>limitation</code> so clients fail predictably.
+                </p>
+              </div>
+            </li>
+            <li>
+              <span class="idx">05</span>
+              <div>
+                <strong>Use NIP-42 where privacy or payment depends on identity.</strong>
+                <p>
+                  AUTH is the right tool for paid relays, private communities,
+                  and restricted reads of DMs (kinds 4 and 1059). Advertise it
+                  only when it is actually enabled and the service URL is set.
+                </p>
+              </div>
+            </li>
+            <li>
+              <span class="idx">06</span>
+              <div>
+                <strong>Run as an unprivileged user under systemd.</strong>
+                <p>
+                  Dedicated account, <code>NoNewPrivileges</code>, tight
+                  <code>ReadWritePaths</code>, and <code>LimitNOFILE</code>
+                  matched to config. Relays that start as root quietly break
+                  their own maintenance commands.
+                </p>
+              </div>
+            </li>
+            <li>
+              <span class="idx">07</span>
+              <div>
+                <strong>Back up events off-box, every night.</strong>
+                <p>
+                  <code>strfry export</code> to JSONL, or SQLite online backup.
+                  Copy config and write-policy scripts too. Keep a copy offsite.
+                  Events compress well; the archive is the product.
+                </p>
+              </div>
+            </li>
+            <li>
+              <span class="idx">08</span>
+              <div>
+                <strong>Compact, prune, and watch the disk.</strong>
+                <p>
+                  LMDB map size is address space, not RAM — but the data
+                  directory is real. Compact after deletes. Drop ephemeral
+                  events. Alert before the volume fills.
+                </p>
+              </div>
+            </li>
+            <li>
+              <span class="idx">09</span>
+              <div>
+                <strong>Keep admin APIs off the public internet.</strong>
+                <p>
+                  NIP-86 (JSON-RPC over HTTP, NIP-98 auth) and any
+                  <code>/panel</code> belong on localhost, a VPN, or a locked
+                  reverse-proxy path. Do not commit database URIs or admin
+                  tokens.
+                </p>
+              </div>
+            </li>
+            <li>
+              <span class="idx">10</span>
+              <div>
+                <strong>Say the policy out loud.</strong>
+                <p>
+                  Terms of service, posting policy, and a contact pubkey for
+                  abuse reports. Operators are not obliged to answer DMs — but
+                  clients need somewhere to send them.
+                </p>
+              </div>
+            </li>
+            <li>
+              <span class="idx">11</span>
+              <div>
+                <strong>Pay for public write access, or don’t offer it.</strong>
+                <p>
+                  Lightning admission or subscription is the honest way to run
+                  a general-purpose relay. Proof of work (NIP-13) is a weaker
+                  cousin. Free and open is a choice you will subsidize.
+                </p>
+              </div>
+            </li>
+            <li>
+              <span class="idx">12</span>
+              <div>
+                <strong>Update, monitor, and write the runbook.</strong>
+                <p>
+                  Unattended security updates, logs, connection counts, and a
+                  one-page restore procedure. A relay nobody can rebuild is a
+                  relay that will disappear.
+                </p>
+              </div>
+            </li>
+          </ol>
+
+          <nav class="pager" aria-label="Pagination">
+            <a href="types.html">
+              <span class="dir">Previous</span>
+              Relay types
+            </a>
+            <a class="next" href="software.html">
+              <span class="dir">Next</span>
+              Software
+            </a>
+          </nav>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <span>NostrOps — a field guide for relay operators.</span>
+        <span>Nostr is a protocol. Relays are a practice.</span>
+      </div>
+    </footer>
+  </body>
+</html>
