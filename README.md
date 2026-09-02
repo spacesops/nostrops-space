@@ -30,6 +30,7 @@ Then visit [http://127.0.0.1:8765/](http://127.0.0.1:8765/).
 .
 ├── index.html          # The one-page site
 ├── styles.css
+├── fonts/              # Self-hosted OFL typefaces
 ├── images/
 │   ├── logo.png
 │   ├── favicon.ico
@@ -41,7 +42,7 @@ Then visit [http://127.0.0.1:8765/](http://127.0.0.1:8765/).
 └── README.md
 ```
 
-No build step. No JavaScript. Fonts load from Google Fonts.
+No build step. No JavaScript. Figtree, Fraunces, and IBM Plex Mono are self-hosted under `fonts/` (SIL Open Font License).
 
 ## Deploy
 
